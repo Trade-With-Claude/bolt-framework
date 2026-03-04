@@ -5,7 +5,8 @@ BOLT is a lightweight project management framework for Claude Code. It keeps eve
 ## Install
 
 ```bash
-chmod +x install.sh
+git clone https://github.com/Trade-With-Claude/bolt-framework.git
+cd bolt-framework
 ./install.sh
 ```
 
