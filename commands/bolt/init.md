@@ -1,62 +1,84 @@
 # /bolt:init — Initialize Project
 
-Set up the BOLT project structure in the current directory.
+Create a project folder with an IDEA.md for the user to describe their vision.
+
+## Usage
+
+```
+/bolt:init <project-name>
+```
+
+The user provides the project name as an argument or in their message (e.g., `/bolt:init Dimension`).
 
 ## Instructions
 
-### Step 1: Check for Existing .bolt/
+### Step 1: Get Project Name
 
-If `.bolt/` already exists, tell the user:
-> Project already initialized. Run `/bolt:status` to see current state.
+Extract the project name from the user's message. If no name was provided, ask for one.
 
-Stop here if .bolt/ exists.
+Convert the name to a folder-friendly format:
+- Use kebab-case for the folder name (e.g., "My Cool App" → `my-cool-app`)
+- Preserve the original name for display in IDEA.md
 
-### Step 2: Detect Environment
+### Step 2: Create Project Folder
 
-- Check if git is initialized. If not, ask user if they want `git init`.
-- Check if there's existing code (brownfield). Note what exists.
+Create the project folder in the **current working directory**:
 
-### Step 3: Quick Project Q&A
-
-Ask the user these questions (all at once, not one-by-one):
-
-1. **What** is this project? (one sentence)
-2. **Why** are you building it? (problem it solves)
-3. **Stack**: languages, frameworks, key tools?
-4. **Anything else** I should know? (constraints, timeline, preferences)
-
-### Step 4: Create .bolt/ Structure
-
-Create the following structure:
-
-```
-.bolt/
-├── PROJECT.md    # Fill with answers from Step 3
-├── STATE.md      # Initialize from template
-└── ROADMAP.md    # Empty, ready for /bolt:roadmap
+```bash
+mkdir <project-folder>
+cd <project-folder>
 ```
 
-Use the templates from the bolt-framework/templates/ directory as a base.
+If the folder already exists:
+- Check if `.bolt/` exists inside it. If yes, tell the user:
+  > Project already initialized. Run `/bolt:status` to see current state.
+  Stop here.
+- If the folder exists but has no `.bolt/`, continue — treat as brownfield.
 
-Fill in PROJECT.md with:
-- **What**: User's answer to Q1
-- **Why**: User's answer to Q2
-- **Stack**: User's answer to Q3
-- **Brownfield Notes**: What was detected in Step 2 (if any)
-- Leave Architecture, Constraints, Decisions sections for /bolt:discover
+### Step 3: Initialize Git
+
+Run `git init` in the new project folder.
+
+### Step 4: Create IDEA.md
+
+Create an `IDEA.md` in the project root with this template:
+
+```markdown
+# {{Project Name}}
+
+## The Idea
+<!-- What is this project? Describe your vision in your own words. -->
+
+
+## The Problem
+<!-- What problem does this solve? Why does it need to exist? -->
+
+
+## Key Features
+<!-- What should it do? List the main features or capabilities. -->
+
+
+## Stack / Tech Preferences
+<!-- Any languages, frameworks, or tools you want to use? -->
+
+
+## Notes
+<!-- Anything else — constraints, inspiration, references, etc. -->
+
+```
 
 ### Step 5: Confirm
 
 Show the user:
 ```
-PROJECT: {{name}}
-STACK:   {{stack}}
-FILES:   .bolt/PROJECT.md, STATE.md, ROADMAP.md
-NEXT:    Run /bolt:discover for deep project understanding
+CREATED: {{project-folder}}/
+FILES:   IDEA.md
+
+Fill in IDEA.md with your vision, then run /bolt:discover
 ```
 
 ## Notes
 
-- Keep it fast. This should take < 2 minutes.
-- Don't over-ask. The deep questions come in /bolt:discover.
-- If user provides a lot of info upfront, fill in more sections and skip redundant questions.
+- Keep it instant. No questions asked — just create the folder and IDEA.md.
+- The user writes their idea at their own pace.
+- All the deep questioning happens in `/bolt:discover`.

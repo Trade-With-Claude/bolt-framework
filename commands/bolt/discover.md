@@ -6,11 +6,13 @@ Follow-the-thread questioning to deeply understand the project before planning.
 
 ### Prerequisites
 
-Read `.bolt/PROJECT.md`. If it doesn't exist, tell user to run `/bolt:init` first.
+Read `IDEA.md` in the project root. If it doesn't exist, tell user to run `/bolt:init` first.
+
+If `.bolt/` doesn't exist yet, that's expected — it gets created at the end of discovery.
 
 ### Approach: Follow-the-Thread
 
-This is conversational, not a checklist. Start from what you know (PROJECT.md) and dig deeper. Adapt your questions based on answers.
+Start from what the user wrote in IDEA.md and dig deeper. This is conversational, not a checklist. Adapt your questions based on answers and what's already written.
 
 ### Areas to Probe
 
@@ -49,7 +51,29 @@ Explore these areas, but don't ask them all as a list. Pick the most important g
 
 ### Completion
 
-After discovery, show:
+After discovery:
+
+1. **Create `.bolt/` structure:**
+
+```
+.bolt/
+├── PROJECT.md    # Fill with everything learned from IDEA.md + discovery
+├── STATE.md      # Initialize from template
+└── ROADMAP.md    # Empty, ready for /bolt:roadmap
+```
+
+Use the templates from the bolt-framework/templates/ directory as a base.
+
+Fill in PROJECT.md with:
+- **What**: From IDEA.md + discovery answers
+- **Why**: From IDEA.md + discovery answers
+- **Stack**: From IDEA.md + discovery answers
+- **Brownfield Notes**: Any existing code detected
+- **Decisions**: Key decisions made during discovery
+
+2. **Update STATE.md** next action to `/bolt:research`.
+
+3. **Show summary:**
 ```
 Discovery complete.
 
@@ -58,6 +82,6 @@ Key decisions:
 - {{decision 2}}
 - {{decision 3}}
 
-PROJECT.md updated.
+.bolt/ created with PROJECT.md, STATE.md, ROADMAP.md
 NEXT: Run /bolt:research for deep technical research.
 ```
