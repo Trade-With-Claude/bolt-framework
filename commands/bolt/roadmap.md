@@ -6,7 +6,7 @@ Break the project into sequential phases with clear requirements.
 
 ### Prerequisites
 
-Read `.bolt/PROJECT.md`. It should have been filled by /bolt:discover. If mostly empty, suggest running `/bolt:discover` first.
+Read `.bolt/PROJECT.md`. It should have been filled by /bolt:discover and /bolt:research. If Architecture/Stack sections are mostly empty, suggest running `/bolt:research` first.
 
 ### Step 1: Analyze & Draft
 

@@ -1,6 +1,6 @@
 # BOLT — Lean Project Management for Claude Code
 
-BOLT is a lightweight project management framework for Claude Code. It keeps everything in-session (no subagents for building), uses 12 commands, and enforces mandatory loop closure.
+BOLT is a lightweight project management framework for Claude Code. It keeps everything in-session (no subagents for building), uses 13 commands, and enforces mandatory loop closure.
 
 ## Install
 
@@ -10,13 +10,14 @@ cd bolt-framework
 ./install.sh
 ```
 
-This copies the 12 command files to `~/.claude/commands/bolt/`.
+This copies the 13 command files to `~/.claude/commands/bolt/`.
 
 ## Quick Start
 
 ```
 /bolt:init          # Set up project
 /bolt:discover      # Deep Q&A about your project
+/bolt:research      # Deep technical research
 /bolt:roadmap       # Break into phases
 /bolt:plan 1        # Plan first phase
 /bolt:build 1       # Build it
@@ -26,10 +27,10 @@ This copies the 12 command files to `~/.claude/commands/bolt/`.
 ## Workflow
 
 ```
-init → discover → roadmap → plan → build → close
-                                ↑               |
-                                └───────────────┘
-                                  (next phase)
+init → discover → research → roadmap → plan → build → close
+                                        ↑                  |
+                                        └──────────────────┘
+                                           (next phase)
 ```
 
 ## Commands
@@ -38,6 +39,7 @@ init → discover → roadmap → plan → build → close
 |---------|-------------|
 | `/bolt:init` | Initialize project — creates .bolt/ |
 | `/bolt:discover` | Deep Q&A for project understanding |
+| `/bolt:research` | Parallel agent-driven technical research |
 | `/bolt:roadmap` | Break project into phases |
 | `/bolt:plan <N>` | Plan phase N with tasks and criteria |
 | `/bolt:build <N>` | Execute phase plan with inline verification |
@@ -52,7 +54,7 @@ init → discover → roadmap → plan → build → close
 ## Design Principles
 
 - **No subagents** — everything runs in-session (~3k tokens saved per avoided subagent)
-- **12 commands** — not 27, not 26
+- **13 commands** — lean but complete
 - **Mandatory UNIFY** — `/bolt:close` after every `/bolt:build`
 - **2-3 tasks per plan** — fits in ~50% context window
 - **One next action** — every command suggests exactly one next step

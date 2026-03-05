@@ -36,6 +36,7 @@ NEXT: {{exactly one suggested action}}
 ### Next Action Logic
 
 Determine the single best next action:
+- No research and PROJECT.md Architecture is empty? → `/bolt:research`
 - No roadmap? → `/bolt:roadmap`
 - Roadmap but no plan for current phase? → `/bolt:plan N`
 - Plan exists but not built? → `/bolt:build N`

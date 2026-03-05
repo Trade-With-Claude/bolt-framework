@@ -16,6 +16,7 @@ Print the following to the user:
 |---------|-------------|
 | `/bolt:init` | Initialize project — creates .bolt/ directory |
 | `/bolt:discover` | Deep Q&A to understand project scope and constraints |
+| `/bolt:research` | Parallel agent-driven technical research |
 | `/bolt:roadmap` | Break project into phases with requirements |
 | `/bolt:plan <N>` | Plan phase N with tasks and acceptance criteria |
 | `/bolt:build <N>` | Execute phase N plan sequentially |
@@ -30,10 +31,10 @@ Print the following to the user:
 ## Workflow
 
 ```
-init → discover → roadmap → plan → build → close
-                                ↑               |
-                                └───────────────┘
-                                  (next phase)
+init → discover → research → roadmap → plan → build → close
+                                        ↑                  |
+                                        └──────────────────┘
+                                           (next phase)
 ```
 
 ## Session Management

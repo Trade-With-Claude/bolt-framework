@@ -45,7 +45,7 @@ Explore these areas, but don't ask them all as a list. Pick the most important g
 2. **Summarize after each round.** "Here's what I understand so far..."
 3. **Fill gaps with reasonable defaults.** State your assumptions explicitly.
 4. **Update PROJECT.md** after discovery with everything learned.
-5. **Update STATE.md** next action to `/bolt:roadmap`.
+5. **Update STATE.md** next action to `/bolt:research`.
 
 ### Completion
 
@@ -59,5 +59,5 @@ Key decisions:
 - {{decision 3}}
 
 PROJECT.md updated.
-NEXT: Run /bolt:roadmap to break the project into phases.
+NEXT: Run /bolt:research for deep technical research.
 ```
