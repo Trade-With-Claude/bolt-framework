@@ -6,12 +6,22 @@ Restore context after returning to a project (new session, after /bolt:clear, et
 
 ### Step 1: Read State
 
-Read in this order:
-1. `.bolt/STATE.md` — current position
-2. `.bolt/PROJECT.md` — project context (skim, don't re-read everything)
-3. `.bolt/ROADMAP.md` — phase overview
+Check what exists:
 
-If `.bolt/` doesn't exist:
+**If `.bolt/` exists with `SCHEMA` file:**
+1. Read `.bolt/SCHEMA` for schema version
+2. Read `.bolt/STATE.md` (root) — get current version
+3. Read `.bolt/PROJECT.md` — project context (skim)
+4. Read `.bolt/{{version}}/STATE.md` — current version state
+5. Read `.bolt/{{version}}/ROADMAP.md` — phase overview
+
+**If `.bolt/` exists WITHOUT `SCHEMA` file (old structure):**
+> Your project uses an older BOLT structure. Run `/bolt:upgrade` to migrate.
+
+**If no `.bolt/` but `IDEA.md` exists in project root (legacy init):**
+> Found IDEA.md but no .bolt/ directory. Run `/bolt:upgrade` to migrate.
+
+**If neither `.bolt/` nor `IDEA.md` exists:**
 > No BOLT project found. Run `/bolt:init` to start.
 
 ### Step 2: Check for Handoff
@@ -36,6 +46,7 @@ Show a brief status:
 Welcome back.
 
 PROJECT: {{name}}
+VERSION: {{version}}
 PHASE:   {{N}}/{{total}} — {{name}}
 STATUS:  {{where we left off}}
 

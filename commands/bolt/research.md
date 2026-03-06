@@ -8,6 +8,8 @@ Parallel agent-driven research to validate stack choices, explore the codebase, 
 
 ### Prerequisites
 
+Determine the current version from `.bolt/STATE.md` (root).
+
 Read `.bolt/PROJECT.md`. If Architecture/Stack/Decisions are mostly empty, tell user to run `/bolt:discover` first.
 
 ### Step 1: Identify Research Tracks
@@ -88,8 +90,8 @@ Present to user. Discuss any decisions that need their input.
 ### Step 4: Update Project
 
 After user confirms:
-1. **Update PROJECT.md** — add findings to Architecture, Constraints, and Decisions sections
-2. **Update STATE.md**:
+1. **Update `.bolt/PROJECT.md`** — add findings to Architecture, Constraints, and Decisions sections
+2. **Update `.bolt/{{version}}/STATE.md`**:
    - Status: research_complete
    - Next Action: `/bolt:roadmap`
 

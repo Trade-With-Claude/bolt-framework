@@ -8,8 +8,10 @@ Execute the plan for a phase, task by task, with inline verification.
 
 ### Prerequisites
 
-1. Read the plan: `.bolt/phases/{{NN}}-{{name}}/{{NN}}-01-PLAN.md`
-2. Read `.bolt/STATE.md` for current position.
+Determine the current version from `.bolt/STATE.md` (root).
+
+1. Read the plan: `.bolt/{{version}}/phases/{{NN}}-{{name}}/{{NN}}-01-PLAN.md`
+2. Read `.bolt/{{version}}/STATE.md` for current position.
 3. Read `.bolt/PROJECT.md` for project context.
 
 If no plan exists for phase N, tell user to run `/bolt:plan N` first.
@@ -27,7 +29,7 @@ Files: {{file list}}
 #### 2. Check Boundaries
 Before touching any file, verify it's not in the DO NOT CHANGE list.
 If a boundary would be violated:
-> ⚠ This task wants to modify {{file}} which is in DO NOT CHANGE.
+> This task wants to modify {{file}} which is in DO NOT CHANGE.
 > Should I proceed anyway? (yes/skip/stop)
 
 #### 3. Execute
@@ -41,13 +43,13 @@ Run the `verify` step exactly as written.
 
 **On PASS:**
 ```
-Task {{M}}: {{name}} ✓ PASS
+Task {{M}}: {{name}} PASS
 ```
 Mark task as `done: true` in the plan file. Continue to next task.
 
 **On FAIL:**
 ```
-Task {{M}}: {{name}} ✗ FAIL
+Task {{M}}: {{name}} FAIL
 Error: {{what went wrong}}
 ```
 Stop and offer options:
@@ -66,14 +68,14 @@ After each task, self-assess context bracket:
 ```
 Build complete: {{passed}}/{{total}} tasks passed
 
-{{Task 1}}: ✓ PASS
-{{Task 2}}: ✓ PASS
-{{Task 3}}: ✗ FAIL (skipped)
+{{Task 1}}: PASS
+{{Task 2}}: PASS
+{{Task 3}}: FAIL (skipped)
 
 NEXT: Run /bolt:close to reconcile and close the loop.
 ```
 
-Update STATE.md with build results.
+Update `.bolt/{{version}}/STATE.md` with build results.
 
 ### Rules
 

@@ -6,9 +6,11 @@ Reconcile plan vs actual results. This is MANDATORY after every `/bolt:build`.
 
 ### Prerequisites
 
+Determine the current version from `.bolt/STATE.md` (root).
+
 Read:
-1. The plan: `.bolt/phases/{{NN}}-{{name}}/{{NN}}-01-PLAN.md`
-2. `.bolt/STATE.md` for build results
+1. The plan: `.bolt/{{version}}/phases/{{NN}}-{{name}}/{{NN}}-01-PLAN.md`
+2. `.bolt/{{version}}/STATE.md` for build results
 
 If no build has been run, tell user:
 > Nothing to close. Run `/bolt:build <N>` first.
@@ -37,7 +39,7 @@ Document anything that differed from the plan:
 
 ### Step 4: Create SUMMARY.md
 
-Save to `.bolt/phases/{{NN}}-{{name}}/{{NN}}-01-SUMMARY.md` using the summary template.
+Save to `.bolt/{{version}}/phases/{{NN}}-{{name}}/{{NN}}-01-SUMMARY.md` using the summary template.
 
 Include:
 - AC results table
@@ -47,6 +49,7 @@ Include:
 
 ### Step 5: Update STATE.md
 
+Update `.bolt/{{version}}/STATE.md`:
 - Mark phase as: complete / partial / failed
 - Update progress section
 - Log any new decisions
@@ -56,22 +59,22 @@ Include:
 
 Based on results:
 
-**All ACs PASS → Phase complete:**
+**All ACs PASS — Phase complete:**
 ```
-Phase {{N}} complete ✓
+Phase {{N}} complete
 NEXT: Run /bolt:plan {{N+1}} to plan the next phase.
 ```
 
-**Some ACs FAIL → Partial:**
+**Some ACs FAIL — Partial:**
 ```
 Phase {{N}} partial — {{X}}/{{Y}} criteria passed.
 Failed: {{list}}
 NEXT: Fix failures and re-run /bolt:build {{N}}, or /bolt:plan {{N}} to re-plan.
 ```
 
-**All ACs FAIL → Phase failed:**
+**All ACs FAIL — Phase failed:**
 ```
-Phase {{N}} failed ✗
+Phase {{N}} failed
 NEXT: Review plan and re-run /bolt:plan {{N}} with adjustments.
 ```
 

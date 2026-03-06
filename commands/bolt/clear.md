@@ -6,7 +6,9 @@ Quick-save state when context is getting heavy but you're still actively working
 
 ### Step 1: Quick Save to STATE.md
 
-Update `.bolt/STATE.md` with:
+Determine the current version from `.bolt/STATE.md` (root).
+
+Update `.bolt/{{version}}/STATE.md` with:
 - Current task (what we're in the middle of)
 - What's done so far this session
 - Immediate next step

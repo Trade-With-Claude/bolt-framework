@@ -6,8 +6,10 @@ Save complete project state for when the user is leaving for hours or days.
 
 ### Step 1: Capture Current State
 
+Determine the current version from `.bolt/STATE.md` (root).
+
 Gather:
-- What phase/task are we in?
+- What version/phase/task are we in?
 - What's been completed this session?
 - What's the immediate next step?
 - Any decisions made or pending?
@@ -24,7 +26,7 @@ Write `.bolt/.continue-here.md`:
 ## Session: {{date}}
 
 ## Where We Left Off
-{{phase, task, what was happening}}
+{{version, phase, task, what was happening}}
 
 ## What Got Done
 - {{item 1}}
@@ -49,6 +51,7 @@ Write `.bolt/.continue-here.md`:
 
 ### Step 3: Update STATE.md
 
+Update `.bolt/{{version}}/STATE.md`:
 - Set status to `paused`
 - Update progress with what got done
 - Set next action

@@ -1,6 +1,6 @@
 # /bolt:init — Initialize Project
 
-Create a project folder with an IDEA.md for the user to describe their vision.
+Create a project folder with a versioned BOLT structure and IDEA.md.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Extract the project name from the user's message. If no name was provided, ask f
 
 Convert the name to a folder-friendly format:
 - Use kebab-case for the folder name (e.g., "My Cool App" → `my-cool-app`)
-- Preserve the original name for display in IDEA.md
+- Preserve the original name for display in IDEA.md and PROJECT.md
 
 ### Step 2: Create Project Folder
 
@@ -39,10 +39,60 @@ If the folder already exists:
 
 Run `git init` in the new project folder.
 
-### Step 4: Create IDEA.md
+### Step 4: Ask Public or Private
 
-Create an `IDEA.md` in the project root with this template:
+Ask the user:
+> Should this be a **public** or **private** GitHub repo?
 
+If `gh` CLI is available, create the repo:
+```bash
+gh repo create <project-folder> --public/--private --source=. --push
+```
+
+If `gh` is not available, skip and tell the user they can set up the remote later.
+
+### Step 5: Create .bolt/ Structure
+
+Create the versioned structure:
+
+```
+<project-folder>/
+├── .bolt/
+│   ├── SCHEMA        # Contains: 1
+│   ├── PROJECT.md    # From template, project name filled in
+│   ├── STATE.md      # Root state pointing to v1
+│   └── v1/
+│       ├── IDEA.md   # Template for user to fill in
+│       ├── ROADMAP.md # Empty, ready for /bolt:roadmap
+│       └── STATE.md  # V1 state, initialized
+```
+
+**`.bolt/SCHEMA`** — just the number:
+```
+1
+```
+
+**`.bolt/STATE.md`** (root — version tracker):
+```markdown
+# STATE
+
+## Current Version
+v1
+
+## Version History
+| Version | Status | Git Tag |
+|---------|--------|---------|
+| v1 | initialized | — |
+
+## Next Action
+Fill in `.bolt/v1/IDEA.md`, then run `/bolt:discover`
+```
+
+**`.bolt/PROJECT.md`** — from template, with project name filled in.
+
+**`.bolt/v1/STATE.md`** — from state template, initialized.
+
+**`.bolt/v1/IDEA.md`** — template:
 ```markdown
 # {{Project Name}}
 
@@ -67,18 +117,21 @@ Create an `IDEA.md` in the project root with this template:
 
 ```
 
-### Step 5: Confirm
+**`.bolt/v1/ROADMAP.md`** — from roadmap template.
 
-Show the user:
+### Step 6: Confirm
+
 ```
 CREATED: {{project-folder}}/
-FILES:   IDEA.md
+REPO:    {{public/private}} (or "no remote — set up later")
+FILES:   .bolt/PROJECT.md, .bolt/v1/IDEA.md, STATE.md, ROADMAP.md
 
-Fill in IDEA.md with your vision, then run /bolt:discover
+Fill in .bolt/v1/IDEA.md with your vision, then run /bolt:discover
 ```
 
 ## Notes
 
-- Keep it instant. No questions asked — just create the folder and IDEA.md.
-- The user writes their idea at their own pace.
+- Keep it fast. No deep questions — just create the structure.
+- The user writes their idea at their own pace in IDEA.md.
 - All the deep questioning happens in `/bolt:discover`.
+- Schema version starts at 1. This enables future `/bolt:upgrade` migrations.

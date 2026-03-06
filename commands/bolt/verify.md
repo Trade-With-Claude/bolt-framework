@@ -6,14 +6,16 @@ Walk the user through acceptance criteria testing for the current or specified p
 
 ### Prerequisites
 
-Find the latest SUMMARY.md or PLAN.md for the phase.
+Determine the current version from `.bolt/STATE.md` (root).
+
+Find the latest SUMMARY.md or PLAN.md for the phase in `.bolt/{{version}}/phases/`.
 If no phase has been built, tell user to build first.
 
 ### Step 1: List Criteria
 
 Show all acceptance criteria:
 ```
-UAT for Phase {{N}}: {{name}}
+UAT for Phase {{N}}: {{name}} ({{version}})
 
 AC-1: {{criterion}}
 AC-2: {{criterion}}
@@ -51,9 +53,9 @@ For FAIL/PARTIAL, ask:
 ```
 UAT Results — Phase {{N}}: {{name}}
 
-AC-1: {{criterion}} ✓ PASS
-AC-2: {{criterion}} ✗ FAIL (P1) — {{description}}
-AC-3: {{criterion}} ~ PARTIAL (P2) — {{description}}
+AC-1: {{criterion}} PASS
+AC-2: {{criterion}} FAIL (P1) — {{description}}
+AC-3: {{criterion}} PARTIAL (P2) — {{description}}
 
 Score: {{passed}}/{{total}} ({{percent}}%)
 ```
@@ -64,7 +66,7 @@ If any FAIL or PARTIAL:
 - Group issues by severity
 - Propose a fix plan (which tasks to add/redo)
 - Ask user to approve
-- Update STATE.md with findings
+- Update `.bolt/{{version}}/STATE.md` with findings
 
 ### Rules
 

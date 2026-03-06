@@ -6,9 +6,11 @@ Follow-the-thread questioning to deeply understand the project before planning.
 
 ### Prerequisites
 
-Read `IDEA.md` in the project root. If it doesn't exist, tell user to run `/bolt:init` first.
+Determine the current version from `.bolt/STATE.md` (root). Default to `v1` if not found.
 
-If `.bolt/` doesn't exist yet, that's expected — it gets created at the end of discovery.
+Read `.bolt/{{version}}/IDEA.md`. If it doesn't exist, tell user to run `/bolt:init` first.
+
+If `.bolt/` doesn't exist at all, tell user to run `/bolt:init` first.
 
 ### Approach: Follow-the-Thread
 
@@ -19,7 +21,7 @@ Start from what the user wrote in IDEA.md and dig deeper. This is conversational
 Explore these areas, but don't ask them all as a list. Pick the most important gaps and ask 3-4 questions at a time, then follow up based on answers.
 
 **Vision & Scope**
-- What does "done" look like for V1?
+- What does "done" look like for this version?
 - Who are the users? How will they use it?
 - What's the one thing this MUST do well?
 
@@ -41,39 +43,36 @@ Explore these areas, but don't ask them all as a list. Pick the most important g
 - Code style preferences?
 - Any libraries/patterns you want to use or avoid?
 
+### For v2+ Versions
+
+If this is not v1, also:
+- Read `.bolt/{{previous_version}}/STATE.md` for context on what was built
+- Read previous IDEA.md to understand evolution
+- Ask: what worked well in the previous version? What didn't?
+- Focus questions on what's NEW in this version
+
 ### Rules
 
 1. **Max 3 rounds of questions.** Don't interrogate — get enough to plan.
 2. **Summarize after each round.** "Here's what I understand so far..."
 3. **Fill gaps with reasonable defaults.** State your assumptions explicitly.
 4. **Update PROJECT.md** after discovery with everything learned.
-5. **Update STATE.md** next action to `/bolt:research`.
+5. **Update version STATE.md** next action to `/bolt:research`.
 
 ### Completion
 
 After discovery:
 
-1. **Create `.bolt/` structure:**
+1. **Update `.bolt/PROJECT.md`** with everything learned (this is the living document across all versions).
 
-```
-.bolt/
-├── PROJECT.md    # Fill with everything learned from IDEA.md + discovery
-├── STATE.md      # Initialize from template
-└── ROADMAP.md    # Empty, ready for /bolt:roadmap
-```
+2. **Update `.bolt/{{version}}/STATE.md`**:
+   - Status: `discovery_complete`
+   - Next action: `/bolt:research`
 
-Use the templates from the bolt-framework/templates/ directory as a base.
+3. **Update root `.bolt/STATE.md`**:
+   - Version status: `discovery_complete`
 
-Fill in PROJECT.md with:
-- **What**: From IDEA.md + discovery answers
-- **Why**: From IDEA.md + discovery answers
-- **Stack**: From IDEA.md + discovery answers
-- **Brownfield Notes**: Any existing code detected
-- **Decisions**: Key decisions made during discovery
-
-2. **Update STATE.md** next action to `/bolt:research`.
-
-3. **Show summary:**
+4. **Show summary:**
 ```
 Discovery complete.
 
@@ -82,6 +81,6 @@ Key decisions:
 - {{decision 2}}
 - {{decision 3}}
 
-.bolt/ created with PROJECT.md, STATE.md, ROADMAP.md
+PROJECT.md updated.
 NEXT: Run /bolt:research for deep technical research.
 ```

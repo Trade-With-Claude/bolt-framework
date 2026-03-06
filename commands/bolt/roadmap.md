@@ -6,6 +6,8 @@ Break the project into sequential phases with clear requirements.
 
 ### Prerequisites
 
+Determine the current version from `.bolt/STATE.md` (root).
+
 Read `.bolt/PROJECT.md`. It should have been filled by /bolt:discover and /bolt:research. If Architecture/Stack sections are mostly empty, suggest running `/bolt:research` first.
 
 ### Step 1: Analyze & Draft
@@ -21,7 +23,7 @@ Based on PROJECT.md, draft phases. Each phase should:
 Show the roadmap in this format:
 
 ```
-ROADMAP: {{project_name}}
+ROADMAP: {{project_name}} ({{version}})
 
 Phase 1: {{name}}
   Goal: {{one sentence}}
@@ -41,8 +43,8 @@ Ask user: **"Does this look right? Want to add, remove, or reorder anything?"**
 ### Step 3: Commit
 
 After user approves:
-1. Write ROADMAP.md to `.bolt/ROADMAP.md`
-2. Update STATE.md:
+1. Write ROADMAP.md to `.bolt/{{version}}/ROADMAP.md`
+2. Update `.bolt/{{version}}/STATE.md`:
    - Phase: 1
    - Status: roadmap_complete
    - Next Action: `/bolt:plan 1`

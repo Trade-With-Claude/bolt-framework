@@ -8,9 +8,11 @@ Create a detailed execution plan for a specific phase.
 
 ### Prerequisites
 
-1. Read `.bolt/ROADMAP.md` — get phase N details.
+Determine the current version from `.bolt/STATE.md` (root).
+
+1. Read `.bolt/{{version}}/ROADMAP.md` — get phase N details.
 2. Read `.bolt/PROJECT.md` — get project context.
-3. Read `.bolt/STATE.md` — verify we're ready to plan this phase.
+3. Read `.bolt/{{version}}/STATE.md` — verify we're ready to plan this phase.
 
 If phase N doesn't exist, tell user and show available phases.
 
@@ -67,9 +69,9 @@ Show the plan to the user. Ask: **"Ready to build? Run `/bolt:build <N>`"**
 
 ### Step 5: Save
 
-1. Create phase directory: `.bolt/phases/{{NN}}-{{name}}/`
+1. Create phase directory: `.bolt/{{version}}/phases/{{NN}}-{{name}}/`
 2. Save plan as `{{NN}}-01-PLAN.md`
-3. Update STATE.md:
+3. Update `.bolt/{{version}}/STATE.md`:
    - Phase: N
    - Plan: created
    - Next Action: `/bolt:build N`
