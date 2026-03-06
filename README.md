@@ -12,6 +12,21 @@ cd bolt-framework
 
 This copies the 16 command files to `~/.claude/commands/bolt/`.
 
+## Upgrade
+
+```bash
+cd bolt-framework
+git pull
+./install.sh
+```
+
+Then in your project, if the structure changed:
+```
+/bolt:upgrade
+```
+
+This updates the command files in `~/.claude/commands/bolt/` — your project files are never touched.
+
 ## Quick Start
 
 ```
