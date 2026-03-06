@@ -8,6 +8,13 @@ Break the project into sequential phases with clear requirements.
 
 Determine the current version from `.bolt/STATE.md` (root).
 
+Read `.bolt/{{version}}/STATE.md` and check the status:
+
+- If status is `initialized` → **STOP**. Tell user:
+  > Discovery not done yet. Run `/bolt:discover` first.
+- If status is `discovery_complete` → suggest `/bolt:research` first but allow proceeding if user insists
+- If status is `research_complete` or later → proceed
+
 Read `.bolt/PROJECT.md`. It should have been filled by /bolt:discover and /bolt:research. If Architecture/Stack sections are mostly empty, suggest running `/bolt:research` first.
 
 ### Step 1: Analyze & Draft

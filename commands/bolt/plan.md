@@ -10,9 +10,16 @@ Create a detailed execution plan for a specific phase.
 
 Determine the current version from `.bolt/STATE.md` (root).
 
+Read `.bolt/{{version}}/STATE.md` and check the status:
+
+- If status is `initialized` → **STOP**. Tell user:
+  > Discovery not done yet. Run `/bolt:discover` first.
+- If status is `discovery_complete` or `research_complete` (no roadmap yet) → **STOP**. Tell user:
+  > No roadmap yet. Run `/bolt:roadmap` first.
+
+Then:
 1. Read `.bolt/{{version}}/ROADMAP.md` — get phase N details.
 2. Read `.bolt/PROJECT.md` — get project context.
-3. Read `.bolt/{{version}}/STATE.md` — verify we're ready to plan this phase.
 
 If phase N doesn't exist, tell user and show available phases.
 

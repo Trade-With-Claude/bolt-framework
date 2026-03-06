@@ -53,6 +53,11 @@ Update `.bolt/{{current_version}}/STATE.md`:
 └── STATE.md      # Fresh state for new version
 ```
 
+Create `STATE.md` with:
+- Status: `initialized`
+- Phase: none
+- Next action: Fill in IDEA.md, then run `/bolt:discover`
+
 Create `IDEA.md` with:
 
 ```markdown
@@ -83,8 +88,9 @@ Create `IDEA.md` with:
 
 Update `.bolt/STATE.md`:
 - Set current version to `{{next_version}}`
+- Set status to `initialized`
 - Add version history entry
-- Set next action to: fill in `.bolt/{{next_version}}/IDEA.md`
+- Set next action to: fill in `.bolt/{{next_version}}/IDEA.md`, then run `/bolt:discover`
 
 ### Step 7: Confirm
 
