@@ -36,7 +36,7 @@ STATUS:  {{status description}}
 CONTEXT: {{GREEN/YELLOW/RED}}
 
 Version History:
-v1: complete (tagged)
+v1: complete (tagged) — git checkout v1 to rollback
 v2: in progress
 
 Progress ({{version}}):

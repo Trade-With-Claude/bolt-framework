@@ -91,9 +91,12 @@ Update `.bolt/STATE.md`:
 ```
 VERSION: {{current_version}} tagged and frozen
 CREATED: .bolt/{{next_version}}/
-GIT TAG: {{current_version}} (git checkout {{current_version}} to go back)
 
-Fill in .bolt/{{next_version}}/IDEA.md, then run /bolt:discover
+ROLLBACK: If {{next_version}} ever goes wrong, run:
+  git checkout {{current_version}}
+This restores your entire project to the state it was in when {{current_version}} was complete.
+
+NEXT: Fill in .bolt/{{next_version}}/IDEA.md, then run /bolt:discover
 ```
 
 ## Notes

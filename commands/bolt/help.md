@@ -58,6 +58,15 @@ All phases done? → /bolt:next → new version cycle
 4. **One next action** — every command suggests exactly one next step
 5. **Versioned iterations** — v1, v2, v3... with git tags for rollback
 
+## Rollback
+
+Each version is git-tagged when you run `/bolt:next`. If a new version goes wrong:
+```
+git checkout v1    # Go back to v1
+git checkout v2    # Go back to v2
+```
+Your code is restored to exactly how it was when that version was completed.
+
 ## File Structure
 
 ```
