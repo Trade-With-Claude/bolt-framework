@@ -4,6 +4,8 @@ Execute the plan for a phase, task by task, with inline verification.
 
 **Usage:** `/bolt:build <N>` where N is the phase number.
 
+**Phase number:** $ARGUMENTS
+
 ## Instructions
 
 ### Prerequisites

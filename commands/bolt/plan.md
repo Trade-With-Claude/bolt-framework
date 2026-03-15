@@ -4,6 +4,8 @@ Create a detailed execution plan for a specific phase.
 
 **Usage:** `/bolt:plan <N>` where N is the phase number.
 
+**Phase number:** $ARGUMENTS
+
 ## Instructions
 
 ### Prerequisites
