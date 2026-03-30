@@ -1,0 +1,33 @@
+{
+  "name": "claude-bolt",
+  "version": "1.0.1",
+  "description": "Claude Code project management framework — 16 slash commands to build full apps without losing control. In-session execution, plan-vs-actual reconciliation, context window management, versioned iterations.",
+  "bin": {
+    "claude-bolt": "bin/install.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "project-management",
+    "ai",
+    "ai-coding",
+    "developer-tools",
+    "slash-commands",
+    "workflow",
+    "anthropic",
+    "framework",
+    "build",
+    "devtools",
+    "cli"
+  ],
+  "author": "TradeWithAI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trade-With-Claude/bolt-framework.git"
+  },
+  "homepage": "https://github.com/Trade-With-Claude/bolt-framework#readme",
+  "bugs": {
+    "url": "https://github.com/Trade-With-Claude/bolt-framework/issues"
+  }
+}

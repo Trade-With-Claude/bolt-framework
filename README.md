@@ -1,8 +1,18 @@
-# BOLT — Lean Project Management for Claude Code
+# BOLT — Claude Code Project Management Framework
 
-BOLT is a lightweight project management framework for Claude Code. It keeps everything in-session (no subagents for building), uses 16 commands, and enforces mandatory loop closure.
+**From idea to production with Claude Code.** BOLT is a lightweight project management framework for Claude Code that keeps everything in-session (no subagents for building), uses 16 slash commands, and enforces mandatory plan-vs-actual reconciliation after every build.
 
 ## Install
+
+### Option 1: npm (recommended)
+
+```bash
+npx claude-bolt
+```
+
+That's it. This clones the repo and installs 16 commands to `~/.claude/commands/bolt/`.
+
+### Option 2: git clone
 
 ```bash
 git clone https://github.com/Trade-With-Claude/bolt-framework.git
